@@ -3,48 +3,41 @@
 const licenseObj = {
     MIT: {
         link: "https://opensource.org/licenses/MIT",
-        badge: "https://img.shields.io/badge/License-MIT-yellow.svg"
+        badge: "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)"
     },
     Apache: {
         link: "https://opensource.org/licenses/Apache-2.0",
-        badge: "https://img.shields.io/badge/License-Apache_2.0-blue.svg"
+        badge: "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
     },
     BSD: {
-        link: "https://opensource.org/licenses/BSD-2-Clause",
-        badge: "https://img.shields.io/badge/License-BSD_2--Clause-orange.svg"
+        link: "https://opensource.org/licenses/BSD-3-Clause",
+        badge: "[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)"
     },
     GPL: {
         link: "https://www.gnu.org/licenses/gpl-3.0",
-        badge: "https://img.shields.io/badge/License-GPLv3-blue.svg"
+        badge: "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)"
     },
     Mozilla: {
         link: "https://opensource.org/licenses/MPL-2.0",
-        badge: "https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg"
+        badge: "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)"
     }
 }
 
 function renderLicenseBadge(license) {
-    const licenseArray = ["MIT", "Apache", "BSD", "GPL", "Mozilla"];
-
-    if (license) {
-        if (license === "MIT") {
-
-        }
-
-    } else {
-        return "";
-    }
-
+    let licenseBadge ="";
+    if (licenseObj[license]) {
+        licenseBadge=licenseObj[license]["badge"];
+    } 
+    return licenseBadge;
 }
-//["MIT","Apache","BSD","GPL","Mozilla"]
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
     let licenseLink = ""; //if const, I couldn't change right? must be let?
     //if the licenseObj has the license in it, then replace the link with the nested link in that license key
-    if(licenseObj[license]){ 
-        licenseLink=licenseObj[license]["link"];
+    if (licenseObj[license]) {
+        licenseLink = licenseObj[license]["link"];
     }
     return licenseLink
 }
@@ -54,16 +47,17 @@ function renderLicenseLink(license) {
 function renderLicenseSection(license) {
     if (license) {
         return `
-            ## License
-            ========================
+## License
 
-            ${license.map(el => {
-            return `
-                ${el}
-                ${renderLicenseLink(el)}
-                ${renderLicenseBadge(el)}
-                `
-            })
+${license.map(el => {
+return `
+#### **${el}**
+
+[For more information, visit their website.](${renderLicenseLink(el)})
+
+${renderLicenseBadge(el)}
+`
+        }).join('')
             }
         `
     }
@@ -75,36 +69,44 @@ function renderLicenseSection(license) {
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
     return `# ${data.title}
-    ========================
 
-    ## Description
-    ========================
-    ${data.description}
-    
 
-    ## Table of Contents
-    ========================
-    * [Installation](#installation)
-    * [Usage](#usage)
-    * [License](#License)
-    * [Contributing](#contributing)
-    * [Tests](#tests)
-    * [Questions](#Questions)
+## Description
 
-    ## Installation
-    ========================
-    ${data.install}
+${data.description}
 
-    ## Usage 
-    ========================
-    ${data.usage}
 
-    ${renderLicenseSection(data.license)}
+## Table of Contents
 
-    ## Contributing 
-    ========================
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#License)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#Questions)
 
-`;
+## Installation
+
+${data.install}
+
+## Usage 
+
+${data.usage}
+
+${renderLicenseSection(data.license)}
+
+## Contributing 
+${data.contribution}
+
+## Tests 
+${data.test}
+
+## Questions
+Check out my [GitHub profile](https://github.com/${data.github})
+
+If you have more questions, [email me!](<${data.email}>)
+
+    `;
 }
 
 // the title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions

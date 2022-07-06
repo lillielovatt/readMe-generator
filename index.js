@@ -1,11 +1,12 @@
-// TODO: Include packages needed for this application
+// packages needed for application
+
 // packages from npm
 const inquirer = require('inquirer');
 const fs = require("fs");
 //imported function created in utils directory 
 const generateMarkdown = require("./utils/generateMarkdown.js");
 
-// TODO: Create an array of questions for user input
+// Create an array of questions for user input
 // all questions are REQUIRED, and are of type "input" (except for license, which is multiple choice)
 const questions = [
     {
@@ -120,23 +121,18 @@ const questions = [
     }
 ];
 
-// TODO: Create a function to write README file
+// Create a function to write README file
 function writeToFile(fileName, data) {
-    return new Promise((resolve,reject) => {
-        fs.writeFile(`${fileName}`, data, err => {
-            if(err){
-                reject(err);
-                return;
-            } 
-            resolve = ({
-                ok:true,
-                message:"File created!"
-            });
-        });
-    });
+    fs.writeFile(`${fileName}`, data, err => {
+        if(err){
+            console.log("error");
+        } else{
+            console.log("worked! or did it?");
+        }
+    })
  }
 
-// TODO: Create a function to initialize app
+//Create a function to initialize app
 function init() {
     return inquirer.prompt(questions);
 }
@@ -147,23 +143,8 @@ init()
         return generateMarkdown(answers)
     })
     .then(markdown => {
-        writeToFile("README.md", markdown)
+        writeToFile("README_gen.md", markdown)
     })
     .catch(err => {
         console.log(err);
     })
-
-
-// WHEN I choose a license for my application from a list of options
-// THEN a badge for that license is added near the top of the README 
-// and a notice is added to the section of the README entitled License that explains which license the application is covered under
-
-// the title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
-//x Description 
-// Table of Contents
-//x Installation
-//x Usage
-// License
-//x Contributing
-//x Tests
-//x Questions -github, email
