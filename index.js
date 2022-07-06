@@ -61,10 +61,10 @@ const questions = [
         }
     },
     {
-        type:"checkbox",
-        name:"license",
-        message:"Which license(s) did the project use?",
-        choices: ["MIT","Apache","BSD","GPL","Mozilla"]
+        type: "checkbox",
+        name: "license",
+        message: "Which license(s) did the project use?",
+        choices: ["MIT", "Apache", "BSD", "GPL", "Mozilla"]
     },
     {
         type: "input",
@@ -121,13 +121,37 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) { }
+function writeToFile(fileName, data) {
+    return new Promise((resolve,reject) => {
+        fs.writeFile(`${fileName}`, data, err => {
+            if(err){
+                reject(err);
+                return;
+            } 
+            resolve = ({
+                ok:true,
+                message:"File created!"
+            });
+        });
+    });
+ }
 
 // TODO: Create a function to initialize app
-function init() { }
+function init() {
+    return inquirer.prompt(questions);
+}
 
 // Function call to initialize app
-init();
+init()
+    .then(answers => {
+        return generateMarkdown(answers)
+    })
+    .then(markdown => {
+        writeToFile("README.md", markdown)
+    })
+    .catch(err => {
+        console.log(err);
+    })
 
 
 // WHEN I choose a license for my application from a list of options
