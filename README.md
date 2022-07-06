@@ -71,6 +71,6 @@ If you'd like to test this, you'll need to clone the repo and follow the [instal
 ## Questions
 Check out my [GitHub profile](https://github.com/lillielovatt)
 
-If you have more questions, [email me!](<lillielovatt@gmail.com>)
+If you have more questions, [email me!](mailto:lillielovatt@gmail.com)
 
     

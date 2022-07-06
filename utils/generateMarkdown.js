@@ -104,7 +104,7 @@ ${data.test}
 ## Questions
 Check out my [GitHub profile](https://github.com/${data.github})
 
-If you have more questions, [email me!](<${data.email}>)
+If you have more questions, [email me!](mailto:${data.email})
 
     `;
 }
