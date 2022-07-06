@@ -1,9 +1,9 @@
-# asfasdf
+# README Generator
 
 
 ## Description
 
-asfdafd
+You know the feeling. You've reached the end of an arduous but fulfilling project and now you need to make the dreaded README file. You need to go back and remind yourself of the markdown syntax, what to include, how to include it...we've all been there. But now, you never have to be there again! With the README generator, you can create your very own README following the simple prompts from the command line, and get a README that looks a lot like this one--with a navigable table of contents, headers, working links, and licenses. You'll never have to stress about a README again. 
 
 
 ## Table of Contents
@@ -17,15 +17,17 @@ asfdafd
 
 ## Installation
 
-safdafaf
+To use the README generator, you'll need just two files--index.js, and generateMarkdown.js. Additionally, you'll need Node.js to download npm, and the packages "inquirer" for logging user responses, and "fs" for writing to a file. Using your command line, you can do all these steps and be on your way in no time!
 
 ## Usage 
 
-fsdadffdas
+When you run "node index.js" (or just, "node index" for those busy bees out there with no time to spare), you'll be prompted with a series of questions, all of which you, the user, are required to answer. By answering the questions, you're creating an array of data that will be used to dynamically fill in a README file--just like this one!
 
 
 ## License
 
+
+The following is only an example: this project DID NOT use any of these licenses. However, any or none of these are available for the user to select and display in their README.
 
 #### **MIT**
 
@@ -58,16 +60,17 @@ fsdadffdas
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
 
         
-
 ## Contributing 
-asfsdfsf
+If you'd like to contribute to this project, that's wonderful. You can fork it to your heart's content!
+
 
 ## Tests 
-asfdasfd
+If you'd like to test this, you'll need to clone the repo and follow the [installation](#installation) directions.
+
 
 ## Questions
-Check out my [GitHub profile](https://github.com/asdfasfd)
+Check out my [GitHub profile](https://github.com/lillielovatt)
 
-If you have more questions, [email me!](<asfasfd>)
+If you have more questions, [email me!](<lillielovatt@gmail.com>)
 
     
