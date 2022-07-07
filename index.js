@@ -6,7 +6,7 @@ const fs = require("fs");
 //imported function created in utils directory 
 const generateMarkdown = require("./utils/generateMarkdown.js");
 
-// Create an array of questions for user input
+// array of objects (questions) for user input
 // all questions are REQUIRED, and are of type "input" (except for license, which is multiple choice)
 const questions = [
     {
@@ -121,30 +121,32 @@ const questions = [
     }
 ];
 
-// Create a function to write README file
+// function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(`${fileName}`, data, err => {
-        if(err){
-            console.log("error");
-        } else{
-            console.log("worked! or did it?");
+    fs.writeFile(`./dist/${fileName}`, data, err => {
+        if (err) {
+            console.log("There was an error.");
+            console.log(err);
+        } else {
+            console.log("Check out your new README file!");
         }
     })
- }
+}
 
-//Create a function to initialize app
+// function to initialize app
 function init() {
+    //takes the array of objects (questions) and prompts the user to answer them and saves the answers, using the inquirer package
     return inquirer.prompt(questions);
 }
 
 // Function call to initialize app
 init()
-    .then(answers => {
+    .then(answers => { //takes the user's answers that init() returns, and sends to imported function 
         return generateMarkdown(answers)
     })
-    .then(markdown => {
+    .then(markdown => { //uses the imported function's return as the file content for writeToFile function
         writeToFile("README_gen.md", markdown)
     })
-    .catch(err => {
+    .catch(err => { //if there are any errors, console log them.
         console.log(err);
     })

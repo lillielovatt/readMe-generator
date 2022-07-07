@@ -1,5 +1,3 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
 const licenseObj = {
     MIT: {
         link: "https://opensource.org/licenses/MIT",
@@ -23,34 +21,43 @@ const licenseObj = {
     }
 }
 
+// function that returns a license badge based on which license is passed in
+// If there is no license, returns an empty string
 function renderLicenseBadge(license) {
-    let licenseBadge ="";
+    let licenseBadge = "";
+
+    //if the licenseObj has the license in it, then replace the link with the nested link in that licenseObj key
+    // this is not strictly necessary as this function is only called if there IS a license, but, best to cover bases.
     if (licenseObj[license]) {
-        licenseBadge=licenseObj[license]["badge"];
-    } 
+        licenseBadge = licenseObj[license]["badge"];
+    }
     return licenseBadge;
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+// function that returns the license link
+// If there is no license, returns an empty string
 function renderLicenseLink(license) {
-    let licenseLink = ""; //if const, I couldn't change right? must be let?
-    //if the licenseObj has the license in it, then replace the link with the nested link in that license key
+    let licenseLink = ""; //if const, I couldn't change. must be let
+
+    //if the licenseObj has the license in it, then replace the link with the nested link in that licenseObj key
+    // this is not strictly necessary as this function is only called if there IS a license, but, best to cover bases.
     if (licenseObj[license]) {
         licenseLink = licenseObj[license]["link"];
     }
-    return licenseLink
+    return licenseLink;
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// function that returns the license section of README
+// If there is no license, returns an empty string
+// sorry about the formatting here--when I indented them, it indented them in the README file too,
+// and stopped it from being interpreted as markdown language, and it was formatted as plain text.
 function renderLicenseSection(license) {
     if (license) {
         return `
 ## License
 
 ${license.map(el => {
-return `
+            return `
 #### **${el}**
 
 [For more information, visit their website.](${renderLicenseLink(el)})
@@ -61,15 +68,22 @@ ${renderLicenseBadge(el)}
             }
         `
     }
-    else {
+    else { //if no license was selected, return empty string
         return "";
     }
 }
 
-// TODO: Create a function to generate markdown for README
+// Create a function to generate markdown for README
+// sorry about the formatting here--when I indented them, it indented them in the README file too,
+// and stopped it from being interpreted as markdown language, and it was formatted as plain text.
 function generateMarkdown(data) {
     return `# ${data.title}
 
+    ${data.license.map(el => {
+        return `
+${renderLicenseBadge(el)}
+        `
+    }).join("")}
 
 ## Description
 
@@ -104,19 +118,9 @@ ${data.test}
 ## Questions
 Check out my [GitHub profile](https://github.com/${data.github})
 
-If you have more questions, [email me!](mailto:${data.email})
+If you have more questions, email me: <${data.email}>
 
     `;
 }
-
-// the title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
-//x Description 
-// Table of Contents
-//x Installation
-//x Usage
-// License
-//x Contributing
-//x Tests
-//x Questions -github, email
 
 module.exports = generateMarkdown;

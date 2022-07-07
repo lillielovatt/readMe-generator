@@ -67,10 +67,12 @@ If you'd like to contribute to this project, that's wonderful. You can fork it t
 ## Tests 
 If you'd like to test this, you'll need to clone the repo and follow the [installation](#installation) directions.
 
+Or you can follow along in [this video I made!](https://drive.google.com/file/d/1y8GRvVVGw6SlzcbnoEU_FOzNHnq811wP/view)
+
 
 ## Questions
 Check out my [GitHub profile](https://github.com/lillielovatt)
 
-If you have more questions, [email me!](mailto:lillielovatt@gmail.com)
+If you have more questions, email me! <lillielovatt@gmail.com> 
 
     
